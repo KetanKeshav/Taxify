@@ -1,0 +1,349 @@
+.button {
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 20px;
+  padding: 10px;
+  width: 250px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.featTitle {
+  font-weight: 600;
+}
+.homeFeatBlock:hover .featTitle span:after {
+  background-image: url(/assets/new-ui/uphomepage/blue_arw_pointer.png);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  content: "";
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin-top: 0px;
+  margin-left: 5px;
+}
+.sticky-top {
+  margin-bottom: 2em;
+}
+.featDesc {
+  font-size: 14px;
+  line-height: 24px;
+  letter-spacing: 0.2px;
+  text-align: center;
+  color: #646464;
+}
+.homeFeatContentContainer {
+  display: flex;
+  margin: auto;
+  align-items: stretch;
+}
+.homeFeatBlock {
+  text-align: center;
+  border-radius: 8px;
+  background-color: #ffffff;
+  box-shadow: 0 7px 9px 0 rgba(171, 205, 254, 0.34);
+  height: 350px;
+  margin: 0.5em;
+  padding: 1.4em;
+  transition: all 0.5s;
+}
+.homeFeatBlock:hover {
+  box-shadow: 4px 13px 26px 0 rgba(56, 112, 194, 0.26);
+}
+
+.homeFeatBlock p {
+  padding: 1em;
+}
+
+.taxformContainer {
+  border-top: 1px solid #e8e3e3;
+}
+
+.tabsContainer {
+  border-right: 1px solid #e8e3e3;
+  min-height: calc(100vh - 30px);
+}
+
+.policyCard {
+  margin: 2em auto;
+  width: 84%;
+
+  box-shadow: 0 7px 9px 0 rgba(171, 205, 254, 0.34);
+  transition: all 0.5s;
+}
+
+.policyCard:hover {
+  box-shadow: 4px 13px 26px 0 rgba(56, 112, 194, 0.26);
+}
+
+.glow {
+  color: #fff;
+  width: 6em;
+  padding: 0.5em;
+
+  -webkit-animation: glow 1s ease-in-out infinite alternate;
+  -moz-animation: glow 1s ease-in-out infinite alternate;
+  animation: glow 1s ease-in-out infinite alternate;
+}
+
+.tabsList {
+  list-style: none;
+}
+
+.tabsList li {
+  padding: 10%;
+  transition: all 0.5s;
+  color: black;
+  cursor: pointer;
+}
+
+.active {
+  color: black;
+  background-color: rgba(184, 184, 184, 0.438);
+}
+
+.tabsList li:hover {
+  color: black;
+  background-color: rgba(184, 184, 184, 0.13);
+}
+
+.tabsList li.active:hover {
+  color: black;
+  background-color: rgba(184, 184, 184, 0.438);
+}
+
+body {
+  font-family: "Muli", sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+.bg-grey {
+  background-color: #f9f9f9;
+}
+
+/* Add a background color when the inputs get focus */
+input[type="text"]:focus,
+input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: #4caf50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+button:hover {
+  opacity: 1;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+/* Float cancel and signup buttons and add an equal width */
+.cancelbtn,
+.signupbtn {
+  float: left;
+  width: 38%;
+}
+
+/* Add padding to container elements */
+.container {
+  padding: 16px !important;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: #474e5d;
+  padding-top: 50px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* Style the horizontal ruler */
+hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 35px;
+  top: 15px;
+  font-size: 40px;
+  font-weight: bold;
+  color: #f1f1f1;
+}
+
+.close:hover,
+.close:focus {
+  color: #f44336;
+  cursor: pointer;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/*utility classes*/
+.m-10 {
+  margin: 1em;
+}
+
+.m-20 {
+  margin: 2em;
+}
+
+.fs-14 {
+  font-size: 14px;
+}
+
+.fs-12 {
+  font-size: 12px;
+}
+
+.fs-13 {
+  font-size: 13px;
+}
+
+.fs-15 {
+  font-size: 15px;
+}
+
+.fs-18 {
+  font-size: 18px;
+}
+
+.fs-20 {
+  font-size: 20px;
+}
+
+.fw-600 {
+  font-weight: 600;
+}
+
+.fw-800 {
+  font-weight: 800;
+}
+
+.mt-4 {
+  margin-top: 4px;
+}
+
+.bg-green {
+  background-color: #5dc32c;
+}
+
+.bg-orange {
+  background-color: #f77728;
+}
+
+.b-orange {
+  border-color: #f77728;
+}
+
+.tc {
+  justify-content: center;
+}
+
+.pb-30 {
+  padding-bottom: 30px;
+}
+
+.h-80 {
+  height: 80px;
+}
+
+.ml-24 {
+  margin-left: 24px !important;
+}
+
+.mb-10 {
+  margin-bottom: 10px !important;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .cancelbtn,
+  .signupbtn {
+    width: 100%;
+  }
+}
+
+@-webkit-keyframes glow {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073,
+      0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+  }
+
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6,
+      0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+  }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
