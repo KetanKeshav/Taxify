@@ -4,8 +4,10 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-
 import Header from "../Header";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+import { calculateAge } from "../../utils";
 
 export default class TaxPaid extends Component {
   constructor(props) {
@@ -74,12 +76,12 @@ export default class TaxPaid extends Component {
 
   handleSubmitA(event) {
     const form = event.currentTarget;
-    this.props.history.push(`/selectpolicies?id=${this.state.itineraryId}`);
+    this.props.history.push(`/policydetailsforrank${this.state.value3 > parseInt("25000") ? this.state.value6 > parseInt("50000")? (3) : (2) : (1)}`);
   }
 
   handleSubmitB(event) {
     const form = event.currentTarget;
-    this.props.history.push(`/selectpolicies?id=${this.state.itineraryId}`);
+    this.props.history.push(`/policydetailsforrank${this.state.value6 > parseInt("25000") ? this.state.value6 > parseInt("50000")? (3) : (2) : (1)}`);
   }
 
   render() {
@@ -165,6 +167,21 @@ export default class TaxPaid extends Component {
                       </Col>
                     </Form.Group>
 
+                    <Form.Group as={Row} controlId="formHorizontalTaxtobepaid ">
+                      <Form.Label column sm={4}>
+                        Rank
+                      </Form.Label>
+                      <Col sm={8}>
+                        <Form.Control
+                          required
+                          readOnly
+                          type="text"
+                          placeholder="Rank"
+                          value={this.state.value3 > parseInt("25000") ? this.state.value6 > parseInt("50000")? (3) : (2) : (1)}
+                        />
+                      </Col>
+                    </Form.Group>
+
                     <Form.Group as={Row}>
                       <Col>
                         <Button type="submit">Select Policies</Button>
@@ -175,7 +192,7 @@ export default class TaxPaid extends Component {
               )}
               {tabB && (
                 <div id="a" className="tabcontent">
-                  <Form onSubmit={e => this.handleSubmitA(e)}>
+                  <Form onSubmit={e => this.handleSubmitB(e)}>
                     <Form.Group as={Row} controlId="formHorizontalTaxtobepaid ">
                       <Form.Label column sm={4}>
                         Tax to be paid
@@ -221,11 +238,27 @@ export default class TaxPaid extends Component {
                       </Col>
                     </Form.Group>
 
+                    <Form.Group as={Row} controlId="formHorizontalTaxtobepaid ">
+                      <Form.Label column sm={4}>
+                        Rank
+                      </Form.Label>
+                      <Col sm={8}>
+                        <Form.Control
+                          required
+                          readOnly
+                          type="text"
+                          placeholder="Rank"
+                          value={this.state.value6 > parseInt("25000") ? this.state.value6 > parseInt("50000")? (3) : (2) : (1)}
+                        />
+                      </Col>
+                    </Form.Group>
+
                     <Form.Group as={Row}>
                       <Col>
                         <Button type="submit">Select Policies</Button>
                       </Col>
                     </Form.Group>
+
                   </Form>
                 </div>
               )}

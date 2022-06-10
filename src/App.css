@@ -93,6 +93,11 @@
   min-height: calc(100vh - 30px);
 }
 
+.tabsContainerForHome {
+  border-right: 1px solid #e8e3e3;
+  min-height: auto;
+}
+
 .policyCard {
   margin: 2em auto;
   width: 84%;

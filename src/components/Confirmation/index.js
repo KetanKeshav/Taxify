@@ -25,11 +25,11 @@ export default class Confirmation extends Component {
           <Row className="my-40">
             <Col>
               <h1 className="fs-heading-3 c-black fw-700 mb-12">
-                Your booking is done
+                You have successfully booked a slot with TaxSaver
               </h1>
               <p className="fs-heading c-grey-60 m-0">
                 Your Order ID is . All updates regarding the application will be
-                sent to eesh.tyagi@gmail.com
+                sent to anandthayur@gmail.com
               </p>
             </Col>
           </Row>
@@ -50,19 +50,18 @@ export default class Confirmation extends Component {
 
                 {/*  */}
                 <p className="fs-body-2 c-grey-40">
-                  <span className="c-black">Meeting Address:</span> kormanagala
-                  near forum mall
+                  <span className="c-black">Meeting Address:</span> Banashankari, 2nd stage, Bangalore - 560070
                 </p>
                 <p className="fs-body-2 c-grey-40">
-                  <span className="c-black">Agent Name:</span>vishnu
+                  <span className="c-black">Agent Name:</span>Ramkumar
                 </p>
                 <p className="fs-body-2 c-grey-40">
                   <span className="c-black">Agent Email:</span>
-                  vishnuvijay1905@gmail.com
+                  abc@gmail.com
                 </p>
                 <p className="fs-body-2 c-grey-40">
                   <span className="c-black">Agent Phone Number:</span>
-                  +91-9008755515
+                  +91-8594960434
                 </p>
               </div>
 
@@ -72,7 +71,7 @@ export default class Confirmation extends Component {
                 </p>
 
                 <p className="fs-body-3 mb-40">
-                  Upload your documents for the visa application. We need
+                  Keep your documents ready for the application. We need
                   scanned copies of your passport and passport size photograph.
                   Documents of parents/ legal guardians are required in the vent
                   of visa applications for minors.
@@ -124,7 +123,7 @@ export default class Confirmation extends Component {
                 <div className="flex flex-middle flex-between">
                   <p className="fs-body-2 c-grey-80 fw-500">Total</p>
                   <p className="fs-body-2 c-grey-80 fw-500">
-                    AED{" "}
+                    Rs{" "}
                     {/* {!isLoading && Number(orderInfo.paymentDetails.netPrice)} */}
                   </p>
                 </div>

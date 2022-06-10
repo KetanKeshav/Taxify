@@ -148,7 +148,7 @@ export default class TaxForm extends Component {
               res.data.taxNeedToPay
             }&taxsavedwopf=${res.data.taxSavedUnder80CWithoutPf}&taxsavedwpf=${
               res.data.taxSavedUnder80CAfterPfDeduction
-            }&from=taxslab`
+            }&from=taxslab&dateOfBirth=${dateOfBirth}&salarySlab=${salarySlab}`
           );
         });
     }
@@ -441,6 +441,8 @@ export default class TaxForm extends Component {
                         <Button type="submit">Calculate</Button>
                       </Col>
                     </Form.Group>
+
+                    
                   </Form>
                 </div>
               )}

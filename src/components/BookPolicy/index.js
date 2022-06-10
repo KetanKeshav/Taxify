@@ -561,9 +561,15 @@ class BookPolicy extends React.Component {
                               <ButtonStrap
                                 type="primary"
                                 className="mt-24"
-                                onClick={this.verifyEmail}
+                                // onClick={this.verifyEmail}
+                                onClick={() =>
+                                  this.setState({
+                                    contact: "collapsed",
+                                    payment: "active"
+                                  })
+                                }
                               >
-                                Verify Email
+                                Submit
                               </ButtonStrap>
                             </Col>
                           )}
@@ -628,13 +634,13 @@ class BookPolicy extends React.Component {
               </Collapse>
 
               <If condition={this.state.payment !== "active"}>
-                <ItineraryHeader step={4} className="mb-16">
+                <ItineraryHeader step={3} className="mb-16">
                   Pay to complete your booking
                 </ItineraryHeader>
               </If>
 
               <If condition={this.state.payment === "active"}>
-                <ItineraryHeader step={4} active>
+                <ItineraryHeader step={3} active>
                   Pay to complete your booking
                 </ItineraryHeader>
               </If>

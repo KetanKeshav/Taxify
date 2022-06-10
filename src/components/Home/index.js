@@ -12,9 +12,56 @@ import laptop from "../../images/laptop.png";
 import meeting11 from "../../images/meeting11.png";
 import shield from "../../images/shield.png";
 import hour from "../../images/24-hours.png";
+import national1 from "../../images/national1.jpg";
+import national2 from "../../images/national2.jpg";
+import national3 from "../../images/national3.jpg";
+import global1 from "../../images/global1.jpg";
+import global2 from "../../images/global2.jpg";
+import global3 from "../../images/global3.jpg";
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      tabA: true,
+      tabB: false,
+      isActiveA: true,
+      isActiveB: false,
+    };
+
+    this.onTabAClick = this.onTabAClick.bind(this);
+    this.onTabBClick = this.onTabBClick.bind(this);
+  }
+
+  onTabAClick() {
+    if (!this.state.isActiveA) {
+      this.setState({
+        isActiveA: true,
+        isActiveB: false,
+        tabA: true,
+        tabB: false
+      });
+    }
+  }
+
+  onTabBClick() {
+    if (!this.state.isActiveB) {
+      this.setState({
+        isActiveA: false,
+        isActiveB: true,
+        tabB: true,
+        tabA: false
+      });
+    }
+  }
+
   render() {
+    const {
+      tabA,
+      tabB,
+      isActiveA,
+      isActiveB,
+    } = this.state;
     return (
       <div>
         <Header />
@@ -82,11 +129,121 @@ class Home extends Component {
           </button>
         </center>
 
-        {/* <center>
+        <br/>
+        <br/>
+        <br/>
+
+        <center>
           <b>
-            <h1>COMAPANY NAME ADVANTAGES</h1>
+            <h1>NEWS SECTION</h1>
           </b>
-        </center> */}
+        </center>
+
+        <br/>
+        <br/>
+
+        <Row>
+          <Col className="tabsContainerForHome" md="auto" xs="auto" lg={3}>
+            <ul className="tabsList">
+              <li
+                className={isActiveA && `active`}
+                onClick={this.onTabAClick}
+              >
+                Global
+              </li>
+              <li
+                className={isActiveB && `active`}
+                onClick={this.onTabBClick}
+              >
+                National
+              </li>
+            </ul>
+          </Col>
+          <Col>
+            {tabA && (
+              <Row className="homeFeatContentContainer">
+                <Col>
+                  <div className="homeFeatBlock">
+                    <div>
+                      <a href="https://economictimes.indiatimes.com/markets/stocks/news/us-stocks-open-lower-on-inflation-rate-hike-angst/articleshow/92109598.cms">
+                        <img src={global1} height={150} width={110} />
+                        <b>
+                          <p>US stocks open lower on inflation, rate hike angst</p>
+                        </b>
+                      </a>
+                    </div>
+                  </div>
+                </Col>
+                <Col>
+                  <div className="homeFeatBlock">
+                    <div>
+                      <a href="https://economictimes.indiatimes.com/markets/stocks/news/wall-street-stock-trading-rules-set-for-overhaul/articleshow/92088770.cms">
+                        <img src={global2} height={150} width={150} />
+                        <b>
+                          <p>US SEC chief unveils plan to overhaul Wall Street stock trading</p>
+                        </b>
+                      </a>   
+                    </div>
+                  </div>
+                </Col>
+    
+                <Col>
+                  <div className="homeFeatBlock">
+                    <div>
+                      <a href="https://economictimes.indiatimes.com/news/economy/indicators/services-activity-at-11-year-high-despite-high-inflation/articleshow/91993167.cms">
+                        <img src={global3} height={150} width={150} />
+                        <b>
+                          <p>Services activity at 11-year high despite high inflation</p>
+                        </b>
+                      </a>       
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+            )}
+            {tabB && (
+              <Row className="homeFeatContentContainer">
+                <Col>
+                  <div className="homeFeatBlock">
+                    <div>
+                      <a href="https://economictimes.indiatimes.com/markets/stocks/news/indias-share-in-global-market-cap-at-a-decade-high-of-3-1/articleshow/92036117.cms">
+                        <img src={national1} height={150} width={110} />
+                        <b>
+                          <p>India’s share in global market cap at a decade high of 3.1 per cent</p>
+                        </b>
+                      </a>
+                    </div>
+                  </div>
+                </Col>
+                <Col>
+                  <div className="homeFeatBlock">
+                    <div>
+                      <a href="https://economictimes.indiatimes.com/news/india/nse-governance-lapses-case-sat-gives-more-time-to-chitra-ramkrishna-to-deposit-rs-2-crore/articleshow/91961257.cms">
+                        <img src={national2} height={150} width={150} />
+                        <b>
+                          <p>NSE governance lapses case: SAT gives more time to Chitra Ramkrishna to deposit Rs 2 crore</p>
+                        </b>
+                      </a>
+                    </div>
+                  </div>
+                </Col>
+    
+                <Col>
+                  <div className="homeFeatBlock">
+                    <div>
+                      <a href="https://economictimes.indiatimes.com/mf/mf-news/sebi-carries-out-search-and-seizure-operations-to-probe-axis-mf-front-running-case/articleshow/91843182.cms">
+                        <img src={national3} height={150} width={150} />
+                        <b>
+                          <p>Sebi carries out search and seizure operations to probe Axis MF front-running case</p>
+                        </b>
+                      </a>   
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+            )}
+          </Col>
+        </Row>
 
         <Container>
           <Row className="m-20">
