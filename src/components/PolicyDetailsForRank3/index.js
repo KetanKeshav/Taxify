@@ -10,6 +10,8 @@ import Badge from "react-bootstrap/Badge";
 import Form from "react-bootstrap/Form";
 import { calculateAge } from "../../utils";
 import axios from "axios";
+import ProgressBar from 'react-bootstrap/ProgressBar'
+
 
 
 export default class PolicyDetailsForRank3 extends Component {
@@ -40,6 +42,9 @@ export default class PolicyDetailsForRank3 extends Component {
       <>
         <Header />
         <Container className="selectPoliciesContainer">
+        <ProgressBar now={100} />
+        <br/>
+        <br/>
           <h1>Select policies from the list below for users in Rank 3 Category</h1>
           <Card className="policyCard">
                   <Card.Header as="h5">

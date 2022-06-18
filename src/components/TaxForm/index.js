@@ -10,6 +10,9 @@ import Col from "react-bootstrap/Col";
 import Header from "../Header";
 import { calculateAge } from "../../utils";
 
+import {db} from '../../firebase'
+import {collection, addDoc, Timestamp} from 'firebase/firestore'
+
 export default class TaxForm extends Component {
   constructor(props) {
     super(props);
@@ -21,6 +24,9 @@ export default class TaxForm extends Component {
       isActiveA: true,
       isActiveB: false,
       formA: {
+        name: "",
+        email: "",
+        phone: "",
         basicSalary: "",
         totalHouseRentAllowances: "",
         payingHouseRentAllowances: "",
@@ -65,7 +71,9 @@ export default class TaxForm extends Component {
     }
   }
 
-  handleSubmitA(event) {
+  handleSubmitA = async (event) => {
+    console.log(this.state.formA, "Form A > CTC Breakup")
+    event.preventDefault()
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -83,7 +91,10 @@ export default class TaxForm extends Component {
         cityCompensatoryAllowances,
         providentFund,
         others,
-        dateOfBirth
+        dateOfBirth,
+        name,
+        phone,
+        email
       } = this.state.formA;
       const data = {
         basicSalary: basicSalary,
@@ -95,6 +106,25 @@ export default class TaxForm extends Component {
         others: others,
         dateOfBirth: dateOfBirth
       };
+
+      try {
+        await addDoc(collection(db, 'CTC_BreakUp'), {
+          name: name,
+          email: email,
+          phone: phone,
+          basicSalary: basicSalary,
+          totalHouseRentAllowances: totalHouseRentAllowances,
+          payingHouseRentAllowances: payingHouseRentAllowances,
+          conveyanceAllowances: conveyanceAllowances,
+          cityCompensatoryAllowances: cityCompensatoryAllowances,
+          providentFund: providentFund,
+          others: others,
+          dateOfBirth: dateOfBirth,
+          created: Timestamp.now()
+        })
+      } catch (err) {
+        alert(err)
+      }
 
       axios
         .post(
@@ -215,7 +245,70 @@ export default class TaxForm extends Component {
                     noValidate
                     validated={validatedA}
                     onSubmit={e => this.handleSubmitA(e)}
+                    id="contactForm"
                   >
+                    
+                    <Form.Group as={Row} controlId="formHorizontalBasicSalary">
+                      <Form.Label column sm={4}>
+                        Name
+                      </Form.Label>
+                      <Col sm={8}>
+                        <Form.Control
+                          required
+                          id="name"
+                          type="text"
+                          value={formA.name}
+                          placeholder="Name"
+                          onChange={this.handleChangeFormA.bind(
+                            this,
+                            "name"
+                          )}
+                        />
+                      </Col>
+                      <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                    </Form.Group>
+
+                    <Form.Group as={Row} controlId="formHorizontalBasicSalary">
+                      <Form.Label column sm={4}>
+                        Email
+                      </Form.Label>
+                      <Col sm={8}>
+                        <Form.Control
+                          required
+                          id="email"
+                          type="email"
+                          value={formA.email}
+                          placeholder="Email ex: abc@gmail.com"
+                          onChange={this.handleChangeFormA.bind(
+                            this,
+                            "email"
+                          )}
+                        />
+                      </Col>
+                      <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                    </Form.Group>
+
+                    <Form.Group as={Row} controlId="formHorizontalBasicSalary">
+                      <Form.Label column sm={4}>
+                        Phone No.
+                      </Form.Label>
+                      <Col sm={8}>
+                        <Form.Control
+                          minLength={10}
+                          required
+                          id="phone"
+                          type="tel"
+                          value={formA.phone}
+                          placeholder="Phone No."
+                          onChange={this.handleChangeFormA.bind(
+                            this,
+                            "phone"
+                          )}
+                        />
+                      </Col>
+                      <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                    </Form.Group>
+
                     <Form.Group as={Row} controlId="formHorizontalBasicSalary">
                       <Form.Label column sm={4}>
                         Basic Salary
@@ -223,6 +316,7 @@ export default class TaxForm extends Component {
                       <Col sm={8}>
                         <Form.Control
                           required
+                          id="basicSalary"
                           type="text"
                           value={formA.basicSalary}
                           placeholder="Basic Salary"
@@ -243,6 +337,7 @@ export default class TaxForm extends Component {
                         <Form.Control
                           type="text"
                           required
+                          id="totalHouseRentAllowances"
                           value={formA.totalHouseRentAllowances}
                           placeholder="House Rent Allowance"
                           onChange={this.handleChangeFormA.bind(
@@ -262,6 +357,7 @@ export default class TaxForm extends Component {
                         <Form.Control
                           type="text"
                           required
+                          id="payingHouseRentAllowances"
                           value={formA.payingHouseRentAllowances}
                           placeholder="Paying House Rent Allowance"
                           onChange={this.handleChangeFormA.bind(
@@ -280,6 +376,7 @@ export default class TaxForm extends Component {
                       <Col sm={8}>
                         <Form.Control
                           required
+                          id="conveyanceAllowances"
                           type="text"
                           value={formA.conveyanceAllowances}
                           placeholder="Conveyance Allowance "
@@ -299,6 +396,7 @@ export default class TaxForm extends Component {
                         <Form.Control
                           required
                           type="text"
+                          id="cityCompensatoryAllowances"
                           value={formA.cityCompensatoryAllowances}
                           placeholder="City Compensatory Allowance"
                           onChange={this.handleChangeFormA.bind(
@@ -317,6 +415,7 @@ export default class TaxForm extends Component {
                         <Form.Control
                           required
                           type="text"
+                          id="providentFund"
                           value={formA.providentFund}
                           placeholder="Provident Funds"
                           onChange={this.handleChangeFormA.bind(
@@ -333,6 +432,7 @@ export default class TaxForm extends Component {
                       <Col sm={8}>
                         <Form.Control
                           required
+                          id="others"
                           type="text"
                           value={formA.others}
                           placeholder="Others"
@@ -346,6 +446,7 @@ export default class TaxForm extends Component {
                       </Form.Label>
                       <Col sm={8}>
                         <Form.Control
+                          id="dateOfBirth"
                           required
                           type="date"
                           value={formA.dateOfBirth}

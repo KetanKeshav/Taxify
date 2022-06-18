@@ -8,6 +8,7 @@ import Header from "../Header";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import { calculateAge } from "../../utils";
+import ProgressBar from 'react-bootstrap/ProgressBar'
 
 export default class TaxPaid extends Component {
   constructor(props) {
@@ -179,6 +180,7 @@ export default class TaxPaid extends Component {
                           placeholder="Rank"
                           value={this.state.value3 > parseInt("25000") ? this.state.value6 > parseInt("50000")? (3) : (2) : (1)}
                         />
+                      <ProgressBar now={33.33 * parseInt(this.state.value3 > parseInt("25000") ? this.state.value6 > parseInt("50000")? (3) : (2) : (1) )} />
                       </Col>
                     </Form.Group>
 
@@ -250,6 +252,7 @@ export default class TaxPaid extends Component {
                           placeholder="Rank"
                           value={this.state.value6 > parseInt("25000") ? this.state.value6 > parseInt("50000")? (3) : (2) : (1)}
                         />
+                      <ProgressBar now={33.33 * parseInt(this.state.value6 > parseInt("25000") ? this.state.value6 > parseInt("50000")? (3) : (2) : (1)) } />
                       </Col>
                     </Form.Group>
 
